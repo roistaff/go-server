@@ -28,7 +28,7 @@ func getPort() string {
 	var target string
 	if len(ct) == 1 {
 		target = "8000"
-	} else if len(ct) != 4 {
+	} else if len(ct[1]) != 4 {
 		fmt.Println("ERROR: BAD PORT NUMBER")
 		os.Exit(1)
 	} else {
@@ -65,7 +65,7 @@ func main() {
 	mux.HandleFunc("/", handler)
 
 	start := color.HiYellowString("[START]")
-	link := color.HiCyanString("http://localhost:" + port)
+	link := color.HiCyanString("http://localhost" + port)
 	log.Print(start + " Server is running on " + link + " ...")
 	log.Fatal(http.ListenAndServe(port, mux))
 }
